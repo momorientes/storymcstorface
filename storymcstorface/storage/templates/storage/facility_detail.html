@@ -1,0 +1,48 @@
+{% extends 'storage/base.html' %}
+
+{% block content %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#storage-table').DataTable({
+            paging: false
+        });
+    });
+</script>
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">{{ facility.name }}</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            {% if user.is_authenticated %}
+            <a href="{% url 'facility_modify' slug=facility.slug%}" class="btn btn-primary btn-lg px-4">Modify</a>
+            {% endif %}
+        </div>
+        </p>
+    </div>
+</div>
+<div class="col-lg-6 mx-auto text-center">
+    <table class="table table-hover" id="storage-table">
+        <thead>
+            <tr>
+                <th scope="col">Location</th>
+                <th scope="col">Category</th>
+                <th scope="col">Vendor</th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for location in locations %}
+            <tr>
+                <th scope="row">{{location.row}} {{location.column}}</th>
+                <td>{{ location.storageitem.product.category }}</td>
+                <td>{{ location.storageitem.product.vendor }}</td>
+                <td>{{ location.storageitem|default_if_none:"Empty" }}</td>
+                <td>{{ location.storageitem.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

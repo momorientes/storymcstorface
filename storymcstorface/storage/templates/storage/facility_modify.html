@@ -1,0 +1,49 @@
+{% extends 'storage/base.html' %}
+
+{% block head %}
+{{ form.media.css }}
+<style>
+    input,
+    select {
+        width: 100%
+    }
+</style>
+{% endblock %}
+
+{% block alerts %}
+{% if alert %}
+<div class="alert alert-{{alert}} alert-dismissible fade show" role="alert">
+    {{ alert_message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">{{ facility }}</h1>
+</div>
+<div class="col-lg-6 mx-auto text-center">
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{ form.item }}</p>
+        <div class="input-group input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Comment</span>
+            <input type="text" class="form-control" aria-label="Comment" aria-describedby="inputGroup-sizing-sm"
+                name="comment" id="id_comment" maxlength="512">
+        </div>
+        <div class="input-group">
+            <input type="number" class="form-control" placeholder="Quantity" aria-label="Required Quantity"
+                id="id_quantity" , name="quantity" , value="1">
+            <button class="btn btn-outline-success" type="submit" name="action" value="add">ADD</button>
+
+            <button class="btn btn-outline-danger" type="submit" name="action" value="remove">REMOVE</button>
+        </div>
+</div>
+
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{ form.media.js }}
+</div>
+
+{% endblock %}

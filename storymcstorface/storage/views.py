@@ -68,14 +68,9 @@ def facility_modify(request, slug):
     if not request.user.is_authenticated:
         return HttpResponse("Unauthorized", status=401)
 
-    additional_context = {}
     if request.method == "POST":
-        print(request.POST)
-
         form = StorageLogForm(request.POST, facility=slug)
-        print(form.errors)
         if form.is_valid():
-            print("hello")
             form.clean()
             item = form.cleaned_data["item"]
             qty = form.cleaned_data["quantity"]
@@ -88,19 +83,16 @@ def facility_modify(request, slug):
                 item.remove(qty, user=request.user, comment=comment)
                 log_text = "removed"
 
-            additional_context["alert"] = "success"
-            additional_context[
-                "alert_message"
-            ] = f"Successfully {log_text} {qty}x {item.product.name}"
+            messages.success(
+                request, f"Successfully {log_text} {qty}x {item.product.name}"
+            )
         else:
-            additional_context["alert"] = "danger"
-            additional_context["alert_message"] = f"ERROR: {form.errors.as_text()}"
+            messages.error(request, form.errors.as_text())
     else:
         form = StorageLogForm(facility=slug)
 
     return render(
         request,
         "storage/facility_modify.html",
-        {"form": form, "facility": Facility.objects.get(slug=slug)}
-        | additional_context,
+        {"form": form, "facility": Facility.objects.get(slug=slug)},
     )

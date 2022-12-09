@@ -10,15 +10,6 @@
 </style>
 {% endblock %}
 
-{% block alerts %}
-{% if alert %}
-<div class="alert alert-{{alert}} alert-dismissible fade show" role="alert">
-    {{ alert_message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{% endif %}
-{% endblock %}
-
 {% block content %}
 <div class="row py-3">
     <nav aria-label="breadcrumb">

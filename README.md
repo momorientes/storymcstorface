@@ -52,10 +52,6 @@ Products exist on a global basis, they can be assigned different slots in your w
 
 All Removals and Insertions are Logged, view the Stora
 
-### Passowrd Change
-
-I didn't yet find a nice place to put the password change button. For now it is hidden at `/password/`.
-
 ## Development
 
 To run locally with a `sqlite3` database and without docker:

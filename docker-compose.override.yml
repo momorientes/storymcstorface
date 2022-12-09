@@ -1,5 +1,7 @@
 version: '3'
 services:
   django:
+    environment:
+      - STORY_DOMAIN=https://example.com
     ports:
       - 8000:8000

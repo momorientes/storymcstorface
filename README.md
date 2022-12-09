@@ -14,10 +14,12 @@ See [docs](docs/).
 ```bash
 git clone https://github.com/momorientes/storymcstorface.git
 cd storymcstorface
+$EDITOR docker-compose.override.yml #set STORY_DOMAIN to your domain when proxying.
 docker-compose build
 docker-compose up -d
 
 docker-compose exec django ./manage.py migrate
+docker-compose exec django ./manage.py collectstatic
 docker-compose exec django ./manage.py createsuperuser
 ```
 

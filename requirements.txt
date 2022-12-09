@@ -3,3 +3,4 @@ django-extensions
 django-select2
 django-crispy-forms
 psycopg2
+gunicorn

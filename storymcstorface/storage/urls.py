@@ -1,4 +1,5 @@
 from django.urls import include, path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from storage import views
 
 urlpatterns = [
@@ -9,3 +10,5 @@ urlpatterns = [
     path("<str:slug>/", views.facility_detail, name="facility_detail"),
     path("<str:slug>/modify/", views.facility_modify, name="facility_modify"),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

@@ -4,6 +4,10 @@ Story McStorface is a simple an minimal Warehouse Management Software written ou
 
 The main Design Goal was to make this software so easy to use that complexity can't be used as an excuse why something wasn't correctly booked.
 
+## Screenshots
+
+See [docs](docs/).
+
 
 ## Installation
 

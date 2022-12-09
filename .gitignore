@@ -1,0 +1,7 @@
+venv/
+storymcstorface/db.sqlite3
+.envrc
+__pycache__/
+*.py[cod]
+*$py.class
+

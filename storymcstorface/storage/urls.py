@@ -7,6 +7,7 @@ urlpatterns = [
     path("select2/", include("django_select2.urls")),
     path("login/", views.login_request, name="login"),
     path("logout", views.logout_request, name="logout"),
+    path("password/", views.change_password, name="change_password"),
     path("<str:slug>/", views.facility_detail, name="facility_detail"),
     path("<str:slug>/modify/", views.facility_modify, name="facility_modify"),
 ]

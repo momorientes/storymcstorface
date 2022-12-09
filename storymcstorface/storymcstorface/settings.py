@@ -126,13 +126,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "static"
+if os.getenv("DOCKER"):
+    STATIC_ROOT = "/code/static/"
+else:
+    STATIC_ROOT = BASE_DIR / "static"
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+if os.getenv("STORY_DOMAIN"):
+    CSRF_TRUSTED_ORIGINS = [os.getenv("STORY_DOMAIN")]
 
 if os.getenv("DJANGO_DEVELOPMENT") == "true":
     from storymcstorface.settings_dev import *

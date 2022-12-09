@@ -3,5 +3,6 @@ services:
   django:
     environment:
       - STORY_DOMAIN=https://example.com
+  nginx:
     ports:
-      - 8000:8000
+      - 8000:80

@@ -127,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 if os.getenv("DOCKER"):
-    STATIC_ROOT = "/code/static/"
+    STATIC_ROOT = "/static/"
 else:
     STATIC_ROOT = BASE_DIR / "static"
 

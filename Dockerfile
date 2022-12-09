@@ -6,6 +6,7 @@ ENV LC_ALL en_US.UTF-8
 ENV DOCKER=True
 
 RUN mkdir /code
+RUN mkdir /static
 
 COPY /storymcstorface /code
 COPY requirements.txt /code

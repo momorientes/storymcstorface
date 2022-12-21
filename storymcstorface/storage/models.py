@@ -60,8 +60,8 @@ class Facility(TimeStampMixin):
 class Location(TimeStampMixin):
     """A location describes the position of an object using rows/colums within a facility"""
 
-    row = models.CharField(max_length=10)
-    column = models.PositiveIntegerField()
+    row = models.CharField(max_length=4)
+    column = models.CharField(max_length=4)
     facility = models.ForeignKey(Facility, on_delete=models.CASCADE)
 
     class Meta:

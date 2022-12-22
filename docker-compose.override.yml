@@ -2,7 +2,7 @@ version: '3'
 services:
   django:
     environment:
-      - STORY_DOMAIN=https://example.com
+      - STORY_DOMAIN=http://localhost:8000
   nginx:
     ports:
       - 8000:80
